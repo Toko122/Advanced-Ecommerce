@@ -17,7 +17,7 @@ const BestProductsSection = () => {
   const cardWidth = 250
   const gap = 24
   const slideWidth = cardWidth + gap
-  const maxVisible = 5
+  const [maxVisible, setMaxVisible] = useState(5)
 
   useEffect(() => {
     const fetchRating = async () => {
@@ -35,6 +35,21 @@ const BestProductsSection = () => {
   }, [])
 
   const filteredProducts = products.filter(product => product.rating >= 4)
+
+  const handleResize = () => {
+    const width = window.innerWidth
+
+    if (width < 640) setMaxVisible(1)
+    else if (width < 1024) setMaxVisible(2)
+    else if (width < 1280) setMaxVisible(3)
+    else setMaxVisible(5)
+  }
+
+  useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const addToCart = async (productId) => {
     try {

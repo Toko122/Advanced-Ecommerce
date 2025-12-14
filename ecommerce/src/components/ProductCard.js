@@ -6,7 +6,7 @@ import React from 'react'
 const ProductCard = ({cardWidth, product, AddToCart }) => {
   return (
     <div
-      className="bg-white rounded-2xl shadow-2xl transition p-4 max-w-[400px] h-[420px]"
+      className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all p-4 h-[420px]"
       style={{ minWidth: `${cardWidth}px` }}
     >
       <div className="w-full h-48 rounded-xl overflow-hidden">
