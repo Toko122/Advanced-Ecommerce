@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'advanced-ecommerce-ruby.vercel.app/api'
+    baseURL: 'https://advanced-ecommerce-ruby.vercel.app/api'
 })
 
 instance.interceptors.request.use((config) => {
