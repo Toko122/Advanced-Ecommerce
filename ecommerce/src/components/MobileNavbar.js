@@ -14,6 +14,12 @@ const MobileNavbar = ({onClose}) => {
      const {isLoggedIn, logout} = useAuth()
      const router = useRouter()
      const [quantity, setQuantity] = useState(0)
+     const [userId, setUserId] = useState(null)
+     
+         useEffect(() => {
+            const id = typeof window !== 'undefined' ? localStorage.getItem('userId') : null
+            setUserId(id)
+      }, [])
 
      const handleLogout = () => {
          logout()
@@ -74,7 +80,7 @@ const MobileNavbar = ({onClose}) => {
               <Link href={'/features/products'} onClick={() => onClose()} className='text-white text-[18px]'>Products</Link>
               <Link href={'/features/about'} onClick={() => onClose()} className='text-white text-[18px]'>About</Link>
               <Link href={'/features/contact'} onClick={() => onClose()} className='text-white text-[18px]'>Contact</Link>
-              <Link href={'/features/cart'} onClick={() => onClose()} className='relative py-1 flex gap-2 items-center'>
+              <Link href={`/features/cart/${userId}`} onClick={() => onClose()} className='relative py-1 flex gap-2 items-center'>
                  <div className='text-white text-[18px]'>
                     Cart
                  </div>
