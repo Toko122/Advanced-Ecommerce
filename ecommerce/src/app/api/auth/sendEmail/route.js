@@ -22,7 +22,7 @@ export async function POST(req, params) {
         user.resetTokenExpire = resetTokenExpire
         await user.save()
 
-        const resetLink = `http://localhost:3000/features/auth/resetPassword/${resetToken}`
+        const resetLink = `https://advanced-ecommerce-ruby.vercel.app/features/auth/resetPassword/${resetToken}`
 
         const transporter = nodemailer.createTransport({
             service: 'gmail',
